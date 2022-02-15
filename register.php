@@ -9,8 +9,13 @@ if(isset($_POST['submit'])){
     $fname = $_POST['fname'];
     $lname = md5($_POST['lname']);
     $email = $_POST['email'];
+    $username = $_POST['username'];
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
+    if($password == $cpassword){
+    }else{
+        echo "<script> alert ('Password not Matched.')</script>";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -19,8 +24,9 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp Form -Login System</title>
+    <link rel="stylesheet" href="https:stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <title>Register Form -Baba System</title>
 </head>
 <body>
     <div class="container">
@@ -33,6 +39,9 @@ if(isset($_POST['submit'])){
                 <input type="text" placeholder="Last Name" name="lname"  value="<?php echo $_POST['lname'];?>" required>
             </div>
             <div class="input-group">
+                <input type="text" placeholder="Username" name="username"  value="<?php echo $_POST['username'];?>" required>
+            </div>
+            <div class="input-group">
                 <input type="email" placeholder="Email" name="email"  value="<?php echo $_POST['email'];?>" required>
             </div>
             <div class="input-group">
@@ -42,7 +51,7 @@ if(isset($_POST['submit'])){
                 <input type="password" placeholder=" Confirm Password" name="cpassword"  value="<?php echo $_POST['cpassword'];?>" required>
             </div>
             <div class="input-group">
-               <button name="submit" class="btn">Sign Up</button>
+               <button name="submit" class="btn">Register</button>
             </div>
             <p class="login-register-text">Already have an Account ? <a href="index.php">login Here</a></p>
         </form>
