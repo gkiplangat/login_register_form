@@ -13,6 +13,24 @@ if(isset($_POST['submit'])){
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
     if($password == $cpassword){
+        $sql = "SELECT * FROM users WHERE email='email'";
+        $result = mysqli_query($conn, $sql);
+        if(!$result->num_rows>0){
+            #Insert Statement
+            $sql = "INSERT INTO users (fname, lname, username, email, password) VALUES('$fname','$lname','$$username','$email','$password')";
+            $result = mysqli_query($conn, $sql);
+            if($result){
+                echo " <script>alert('Wow, User Regestration Complete')</script>";
+                $username = "";
+                $email = "";
+                $_POST['password']= "";
+                $_POST['cpassword']= "";
+            }else{
+                echo " <script>alert('Something Went wrong, Try again')</script>";
+            }
+        }else{
+            echo " <script>alert('User already exist in our system')</script>";
+        }
     }else{
         echo "<script> alert ('Password not Matched.')</script>";
     }
