@@ -7,20 +7,23 @@ if(isset($_SESSION['username'])){
 }
 if(isset($_POST['submit'])){
     $fname = $_POST['fname'];
-    $lname = md5($_POST['lname']);
-    $email = $_POST['email'];
+    $lname = $_POST['lname'];
     $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
     if($password == $cpassword){
-        $sql = "SELECT * FROM users WHERE email='email'";
+        $sql = "SELECT * FROM users WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if(!$result->num_rows>0){
             #Insert Statement
-            $sql = "INSERT INTO users (fname, lname, username, email, password) VALUES('$fname','$lname','$$username','$email','$password')";
+            $sql = "INSERT INTO users (fname, lname,username, email, password) 
+            VALUES('$fname','$lname','$username','$email','$password')";
             $result = mysqli_query($conn, $sql);
             if($result){
                 echo " <script>alert('Wow, User Regestration Complete')</script>";
+                $fname = "";
+                $lname = "";
                 $username = "";
                 $email = "";
                 $_POST['password']= "";
