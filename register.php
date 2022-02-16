@@ -6,8 +6,8 @@ if(isset($_SESSION['username'])){
     header("Location: Welcome.php");
 }
 if(isset($_POST['submit'])){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = md5($_POST['password']);
@@ -17,13 +17,13 @@ if(isset($_POST['submit'])){
         $result = mysqli_query($conn, $sql);
         if(!$result->num_rows>0){
             #Insert Statement
-            $sql = "INSERT INTO users (fname, lname,username, email, password) 
-            VALUES('$fname','$lname','$username','$email','$password')";
+            $sql = "INSERT INTO users (firstname, lastname,username, email, password) 
+            VALUES('$firstname','$lastname','$username','$email','$password')";
             $result = mysqli_query($conn, $sql);
             if($result){
                 echo " <script>alert('Wow, User Regestration Complete')</script>";
-                $fname = "";
-                $lname = "";
+                $firstname = "";
+                $lastname = "";
                 $username = "";
                 $email = "";
                 $_POST['password']= "";
@@ -54,10 +54,10 @@ if(isset($_POST['submit'])){
         <form action="" method="POST" class="login-email">
             <p class="login-text" style="font-size: 2rem; font-weight:800;"> Sign Up</p>
             <div class="input-group">
-                <input type="text" placeholder="First Name" name="fname"  value="<?php echo $_POST['fname'];?>" required>
+                <input type="text" placeholder="First Name" name="firstname"  value="<?php echo $_POST['firstname'];?>" required>
             </div>
             <div class="input-group">
-                <input type="text" placeholder="Last Name" name="lname"  value="<?php echo $_POST['lname'];?>" required>
+                <input type="text" placeholder="Last Name" name="lastname"  value="<?php echo $_POST['lastname'];?>" required>
             </div>
             <div class="input-group">
                 <input type="text" placeholder="Username" name="username"  value="<?php echo $_POST['username'];?>" required>
