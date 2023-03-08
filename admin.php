@@ -17,7 +17,7 @@ if(!isset($_SESSION['username'])){
 <body>
 <ul>
   <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">Add product</a></li>
+  <li><a href="add_product.php">Add product</a></li>
   <li><a href="#contact">View Product</a></li>
   <li><a href="#about">About</a></li>
 </ul>
