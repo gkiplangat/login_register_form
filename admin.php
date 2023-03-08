@@ -15,7 +15,14 @@ if(!isset($_SESSION['username'])){
     <title>Welcome - Baba System</title>
 </head>
 <body>
-    <?php echo " <h1>Welcome". $_SESSION['username']."</h1>";?>
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">Add product</a></li>
+  <li><a href="#contact">View Product</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+    <h1>Admin Page</h1> </br>
+    <?php echo " <h1>Welcome ". $_SESSION['username']."</h1>";?>
     <a href="logout.php">Logout</a>
 </body>
 </html>

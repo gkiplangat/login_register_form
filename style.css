@@ -78,3 +78,34 @@ body{
     text-decoration: none;
     color: #6c5ce7;
 }
+
+/*==============
+Admin side - Nav menu
+*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+  }
+  
+  li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  li a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  /*=========
+  end of nav -menu
+  ============*/

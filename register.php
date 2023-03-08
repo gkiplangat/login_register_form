@@ -12,13 +12,14 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
+    $user_type = $_POST['user_type'];
     if($password == $cpassword){
         $sql = "SELECT * FROM users WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if(!$result->num_rows>0){
             #Insert Statement
-            $sql = "INSERT INTO users (firstname, lastname,username, email, password) 
-            VALUES('$firstname','$lastname','$username','$email','$password')";
+            $sql = "INSERT INTO users (firstname, lastname,username, email, password , user_type) 
+            VALUES('$firstname','$lastname','$username','$email','$password', '$user_type')";
             $result = mysqli_query($conn, $sql);
             if($result){
                 echo " <script>alert('Wow, User Regestration Complete')</script>";
@@ -28,6 +29,7 @@ if(isset($_POST['submit'])){
                 $email = "";
                 $_POST['password']= "";
                 $_POST['cpassword']= "";
+                $user_type = "";
             }else{
                 echo " <script>alert('Something Went wrong, Try again')</script>";
             }
@@ -70,6 +72,9 @@ if(isset($_POST['submit'])){
             </div>
             <div class="input-group">
                 <input type="password" placeholder=" Confirm Password" name="cpassword"  value="<?php echo $_POST['cpassword'];?>" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="user type i.e admin or user" name="user_type"  value="<?php echo $_POST['user_type'];?>" required>
             </div>
             <div class="input-group">
                <button name="submit" class="btn">Register</button>
